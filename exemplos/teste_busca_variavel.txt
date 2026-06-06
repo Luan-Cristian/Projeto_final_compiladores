@@ -1,0 +1,8 @@
+Teste de busca de variavel inexistente:
+
+1. Declarar nome como string.
+2. Buscar idade.
+
+Resultado esperado:
+- nome deve ser armazenado corretamente.
+- idade deve gerar erro, pois nao foi declarada em nenhum escopo acessivel.

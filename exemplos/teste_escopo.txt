@@ -1,0 +1,14 @@
+Teste de escopo aninhado:
+
+1. Declarar x como int no escopo global.
+2. Entrar em novo escopo.
+3. Declarar y como float.
+4. Buscar x dentro do escopo interno.
+5. Buscar y dentro do escopo interno.
+6. Sair do escopo.
+7. Buscar y novamente.
+
+Resultado esperado:
+- x deve ser encontrado dentro do escopo interno, pois pertence ao escopo global.
+- y deve ser encontrado enquanto o escopo interno estiver ativo.
+- y nao deve ser encontrado depois que o escopo interno for removido.

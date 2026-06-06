@@ -1,0 +1,8 @@
+Teste de erro de redeclaracao:
+
+1. Declarar x como int.
+2. Declarar x novamente como float no mesmo escopo.
+
+Resultado esperado:
+- A primeira declaracao deve ser aceita.
+- A segunda declaracao deve gerar erro, pois a variavel ja existe no mesmo escopo.

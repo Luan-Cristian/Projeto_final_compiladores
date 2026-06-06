@@ -1,0 +1,54 @@
+Escolha o modo de execucao:
+1 - Executar testes automaticos
+2 - Usar menu interativo
+Opcao: === GERENCIADOR DE TABELA DE SIMBOLOS ===
+Simulacao de escopos aninhados usados na analise semantica.
+
+--- Teste 1: declaracoes no escopo global ---
+[OK] Variavel 'x' declarada como 'int' no escopo 0.
+[OK] Variavel 'nome' declarada como 'string' no escopo 0.
+[OK] Variavel 'x' encontrada no escopo 0. Tipo: int
+
+=== ESTADO ATUAL DA TABELA DE SIMBOLOS ===
+GLOBAL: {'x': {'tipo': 'int', 'nivel': 0}, 'nome': {'tipo': 'string', 'nivel': 0}}
+==========================================
+
+--- Teste 2: entrada em novo escopo ---
+[OK] Novo escopo criado. Nivel atual: 1
+[OK] Variavel 'y' declarada como 'float' no escopo 1.
+[OK] Variavel 'y' encontrada no escopo 1. Tipo: float
+[OK] Variavel 'nome' encontrada no escopo 0. Tipo: string
+
+=== ESTADO ATUAL DA TABELA DE SIMBOLOS ===
+GLOBAL: {'x': {'tipo': 'int', 'nivel': 0}, 'nome': {'tipo': 'string', 'nivel': 0}}
+ESCOPO 1: {'y': {'tipo': 'float', 'nivel': 1}}
+==========================================
+
+--- Teste 3: sombreamento de variavel ---
+[OK] Variavel 'x' declarada como 'float' no escopo 1.
+[OK] Variavel 'x' encontrada no escopo 1. Tipo: float
+
+=== ESTADO ATUAL DA TABELA DE SIMBOLOS ===
+GLOBAL: {'x': {'tipo': 'int', 'nivel': 0}, 'nome': {'tipo': 'string', 'nivel': 0}}
+ESCOPO 1: {'y': {'tipo': 'float', 'nivel': 1}, 'x': {'tipo': 'float', 'nivel': 1}}
+==========================================
+
+--- Teste 4: erro de redeclaracao no mesmo escopo ---
+[ERRO] Variavel 'x' ja declarada neste escopo.
+
+=== ESTADO ATUAL DA TABELA DE SIMBOLOS ===
+GLOBAL: {'x': {'tipo': 'int', 'nivel': 0}, 'nome': {'tipo': 'string', 'nivel': 0}}
+ESCOPO 1: {'y': {'tipo': 'float', 'nivel': 1}, 'x': {'tipo': 'float', 'nivel': 1}}
+==========================================
+
+--- Teste 5: saida de escopo e busca ---
+[OK] Escopo de nivel 1 removido. Nivel atual: 0
+[OK] Variavel 'x' encontrada no escopo 0. Tipo: int
+[ERRO] Variavel 'y' nao foi declarada em nenhum escopo acessivel.
+
+=== ESTADO ATUAL DA TABELA DE SIMBOLOS ===
+GLOBAL: {'x': {'tipo': 'int', 'nivel': 0}, 'nome': {'tipo': 'string', 'nivel': 0}}
+==========================================
+
+--- Teste 6: tentativa de remover escopo global ---
+[ERRO] Nao e permitido remover o escopo global.
